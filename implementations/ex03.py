@@ -1,7 +1,5 @@
 import hashlib
 
-# ===== CONFIGURAÇÃO =====
-
 VERSION = 2
 
 PREVIOUS_BLOCK = (
@@ -23,10 +21,8 @@ a647dce7934842454ea107c44f24dcf35e3e5e61a040f16b1a9e258cc4be49cc
 4815c5c308541d57129f6e5274894e12206b0fd38f987268983afb608aa26ce4
 """
 
-# Jan 03 2009 16:15:05 UTC
 MIN_TIMESTAMP = 1230999305
 
-# Jan 12 2009 01:30:25 UTC
 MAX_TIMESTAMP = 1231723825
 
 TARGET = int(
@@ -75,24 +71,15 @@ def mine_block():
             ).hexdigest()
 
             if int(block_hash, 16) <= TARGET:
-
-                print("\nBlock found!")
-                print("Hash:", block_hash)
-                print("Timestamp:", timestamp)
-                print("Nonce:", nonce)
-
                 with open(
                     "solutions/exercise03.txt",
                     "w"
                 ) as file:
                     file.write(header)
-
                 print(
                     "Saved to solutions/exercise03.txt"
                 )
-
                 return
-
             nonce += 1
 
     print("No valid block found.")
